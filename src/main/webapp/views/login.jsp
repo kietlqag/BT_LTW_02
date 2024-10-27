@@ -6,20 +6,6 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<script type="text/javascript">
-	// Hàm này sẽ được gọi khi người dùng nhập username
-	function updateForgotPasswordLink() {
-		var username = document.getElementById("username").value;
-		var forgotPasswordLink = document
-				.getElementById("forgot-password-link");
-
-		// Cập nhật URL của link Forgot password với giá trị username
-		forgotPasswordLink.href = "/servlet/quen-mat-khau?username="
-				+ encodeURIComponent(username);
-	}
-</script>
-</head>
 <body>
 	<form action="/servlet/dang-nhap" method="post">
 		<c:if test="${alert !=null}">
@@ -40,7 +26,7 @@
 
 		<div class="container" style="background-color: #f1f1f1">
 			<button type="button" class="cancelbtn">Cancel</button>
-			<span class="password"> Forgot <a href="#"
+			<span class="password"> Forgot <a href="/servlet/quen-mat-khau"
 				id="forgot-password-link">password?</a>
 			</span>
 		</div>

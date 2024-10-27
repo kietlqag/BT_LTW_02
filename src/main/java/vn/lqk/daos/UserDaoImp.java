@@ -59,25 +59,25 @@ public class UserDaoImp implements IUserDao {
 	public boolean checkExistUsername(String username) {
 		boolean duplicate = false;
 		String query = "SELECT 1 FROM user WHERE username = ?";
-		try {
-			new DBConnectionMySQL();
-			conn = DBConnectionMySQL.getConnection();
-			ps = conn.prepareStatement(query);
+
+		try (Connection conn = DBConnectionMySQL.getConnection(); PreparedStatement ps = conn.prepareStatement(query)) {
+
 			ps.setString(1, username);
-			rs = ps.executeQuery();
-			if (rs.next()) {
-				duplicate = true;
+			try (ResultSet rs = ps.executeQuery()) {
+				if (rs.next()) {
+					duplicate = true;
+				}
 			}
-			ps.close();
-			conn.close();
+
 		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 		return duplicate;
 	}
 
 	@Override
 	public void update(String username, String password) {
-		String sql = "UPDATE account SET password = ? WHERE username = ?";
+		String sql = "UPDATE user SET password = ? WHERE username = ?";
 
 		try {
 			new DBConnectionMySQL();
