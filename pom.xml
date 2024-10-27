@@ -8,6 +8,13 @@
 	<packaging>war</packaging>
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.sitemesh/sitemesh -->
+		<dependency>
+			<groupId>org.sitemesh</groupId>
+			<artifactId>sitemesh</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+
 		<!--
 		https://mvnrepository.com/artifact/jakarta.activation/jakarta.activation-api -->
 		<dependency>
