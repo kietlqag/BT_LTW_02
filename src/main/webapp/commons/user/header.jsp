@@ -53,6 +53,8 @@
 <link
 	href="${URL}assets/global/plugins/slider-layer-slider/css/layerslider.css"
 	rel="stylesheet">
+<link href="${URL}assets/global/plugins/uniform/css/uniform.default.css"
+	rel="stylesheet" type="text/css">
 <!-- Page level plugin styles END -->
 
 <!-- Theme styles START -->
@@ -71,6 +73,7 @@
 <!-- Theme styles END -->
 </head>
 <!-- Head END -->
+
 
 <!-- BEGIN TOP BAR -->
 <div class="pre-header">
@@ -105,7 +108,17 @@
 					<li><a href="shop-account.html">My Account</a></li>
 					<li><a href="shop-wishlist.html">My Wishlist</a></li>
 					<li><a href="shop-checkout.html">Checkout</a></li>
-					<li><a href="page-login.html">Log In</a></li>
+					<li><c:choose>
+							<c:when test="${sessionScope.user == null}">
+								<a href="${pageContext.request.contextPath }/dang-nhap">Login</a> |
+								<a href="${pageContext.request.contextPath }/dang-ky">Register</a>
+							</c:when>
+							<c:otherwise>
+								<a href="${pageContext.request.contextPath }/member/myaccount">${sessionScope.user.fullName }</a> |
+								<a href="${pageContext.request.contextPath }/dang-xuat">Logout
+								</a>
+							</c:otherwise>
+						</c:choose></li>
 				</ul>
 			</div>
 			<!-- END TOP BAR MENU -->

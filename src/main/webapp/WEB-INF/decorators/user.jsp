@@ -8,7 +8,6 @@
 <html lang="en">
 <!--<![endif]-->
 
-
 <!-- Body BEGIN -->
 <body class="ecommerce">
 	<!-- START HEADER -->
@@ -20,6 +19,8 @@
 			<sitemesh:write property="body" />
 		</div>
 	</div>
+	
+	<br/>
 
 	<!-- START FOOTER -->
 	<%@ include file="/commons/user/footer.jsp"%>
@@ -45,6 +46,8 @@
 	<!-- END CORE PLUGINS -->
 
 	<!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+	<script src="${URL}assets/global/plugins/uniform/jquery.uniform.min.js"
+		type="text/javascript"></script>
 	<script
 		src="${URL}assets/global/plugins/fancybox/source/jquery.fancybox.pack.js"
 		type="text/javascript"></script>
@@ -86,9 +89,9 @@
 			Layout.initOWL();
 			LayersliderInit.initLayerSlider();
 			Layout.initImageZoom();
+			Layout.initUniform();
 			Layout.initTouchspin();
 			Layout.initTwitter();
-
 			Layout.initFixHeaderWithPreHeader();
 			Layout.initNavScrolling();
 		});
