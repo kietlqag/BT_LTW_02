@@ -66,13 +66,14 @@ public class CategoryDaoImp implements ICategoryDao {
 
 	@Override
 	public void insert(CategoryModel category) {
-		String sql = "INSERT INTO category(categoryname, images) VALUES (?,?)";
+		String sql = "INSERT INTO category(categoryname, images, status) VALUES (?, ?, ?)";
 		try {
 			new DBConnectionMySQL();
 			conn = DBConnectionMySQL.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, category.getCategoryname());
 			ps.setString(2, category.getImages());
+			ps.setInt(3, category.getStatus());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -81,14 +82,15 @@ public class CategoryDaoImp implements ICategoryDao {
 
 	@Override
 	public void update(CategoryModel category) {
-		String sql = "UPDATE category SET categoryname = ?, images = ? WHERE categoryid = ?";
+		String sql = "UPDATE category SET categoryname = ?, images = ?, status = ? WHERE categoryid = ?";
 		try {
 			new DBConnectionMySQL();
 			conn = DBConnectionMySQL.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, category.getCategoryname());
 			ps.setString(2, category.getImages());
-			ps.setInt(3, category.getCategoryid());
+			ps.setInt(3, category.getStatus());
+			ps.setInt(4, category.getCategoryid());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,7 +99,7 @@ public class CategoryDaoImp implements ICategoryDao {
 
 	@Override
 	public void delete(int categoryid) {
-		String sql = "DELETE FROM category WHERE cate_id = ?";
+		String sql = "DELETE FROM category WHERE categoryid = ?";
 		try {
 			new DBConnectionMySQL();
 			conn = DBConnectionMySQL.getConnection();
